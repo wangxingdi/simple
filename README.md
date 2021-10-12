@@ -43,7 +43,11 @@ server {
 
 
 * 修改hexo的_config.yml，修改
+  * title: 王兴迪的网络博客
+  * subtitle: 脑子是个好东西
   * theme：simple
+  * permalink: :title.html
+  * skip_render: _posts/blog/README.md
 * 修改hexo的package.json，加入
   * "hexo-generator-feed": "^3.0.0"
   * "hexo-generator-sitemap": "^2.0.0"
