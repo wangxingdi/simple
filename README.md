@@ -85,9 +85,5 @@ server {
 
 
 
-cp -r /home/ubuntu/hexo-blog/hexo-blog/public/* /home/ubuntu/wangxingdi.com/
-
-
-
 
 
