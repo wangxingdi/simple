@@ -94,10 +94,12 @@ server {
 cd /home/ubuntu/hexo-blog/hexo-blog/themes/simple
 result=`sudo git pull`
 
+timestamp=`date +"%Y-%m-%d %H:%M:%S"`
+
 if [ "$result" == "Already up to date." ]; then
-        echo "===git no update required"
+        echo "$timestamp - hexo theme git no update required"
 else
-        echo "===git pull successful"
+        echo "$timestamp - hexo theme git pull success"
 fi
 ```
 
@@ -108,16 +110,18 @@ fi
 cd /home/ubuntu/hexo-blog/hexo-blog/source/_posts/blog
 result=`sudo git pull`
 
+timestamp=`date +"%Y-%m-%d %H:%M:%S"`
+
 if [ "$result" == "Already up to date." ]; then
-        echo "===no post publish"
+        echo "$timestamp - blog no post publish"
 else
         cd /home/ubuntu/hexo-blog/hexo-blog
         sudo hexo clean && sudo hexo g
         if [ $? -eq 0 ]; then
                 sudo cp -r /home/ubuntu/hexo-blog/hexo-blog/public/* /home/ubuntu/wangxingdi.com/
-                echo "===post publish successful"
+                echo "$timestamp - blog post publish success"
         else
-                echo "===hexo g is fail"
+                echo "$timestamp - blog post publish fail"
         fi
 fi
 ```
@@ -125,7 +129,7 @@ fi
 ### 定时任务
 * cd /var/spool/cron/crontabs
 * sudo vim ubuntu
-* 添加一行：0 0 2 * * ? bash /home/ubuntu/sh/hexo-post-publish.sh >> /home/ubuntu/log/cron.log
+* 添加一行：0 2 * * *  bash /home/ubuntu/sh/hexo-post-publish.sh >> /home/ubuntu/log/cron.log
 * sudo service cron reload
 * mkdir home/ubuntu/log
 
