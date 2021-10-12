@@ -2,9 +2,7 @@
 一个简单的hexo主题
 
 # How use
-
-# 先决条件
-
+下面是全部的操作
 ## nginx
 
 ### ubuntu18.04 LTS安装nginx
@@ -14,7 +12,7 @@
   * sudo apt update
   * sudo apt install nginx
 
-* nginx相关操作
+* nginx相关操作指令
   * 启动：sudo systemctl start nginx
   * 停止：sudo systemctl stop nginx
   * 状态：sudo systemctl status nginx
@@ -39,11 +37,30 @@ server {
     return 301 $scheme://www.$host$request_uri;  # 301跳转www
 }
 ```
+## hexo
 
+### ubuntu18.04 LTS安装nodejs和npm
 
+* sudo curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
+* sudo apt-get install -y nodejs
+* reboot
 
-* 修改hexo的_config.yml，修改
-  * title: 王兴迪的网络博客
+### 检查nodejs和npm的版本号
+* nodejs -v
+* npm -v
+
+### 安装hexo
+* mkdir hexo-blog
+* cd hexo-blog
+* sudo npm install --unsafe-perm --verbose -g hexo
+* sudo hexo init hexo-blog
+* 执行命令
+  * npm install
+  * hexo clean
+  * hexo g
+  * hexo s
+* 修改hexo的_config.yml
+  * title: 王兴迪的个人博客
   * subtitle: 脑子是个好东西
   * theme：simple
   * permalink: :title.html
@@ -53,9 +70,24 @@ server {
   * "hexo-generator-sitemap": "^2.0.0"
   * "hexo-renderer-pug": "^1.0.0"
   * "hexo-wordcount-sy": "^6.0.4"
-* 执行命令
-  * npm install
-  * hexo clean
-  * hexo g
-  * hexo s
+  
+## 同步git
+
+### 同步theme
+* 进入themes目录
+* git init
+* git clone https://github.com/wangxingdi/simple.git
+
+### 同步source
+* 进入source/_posts
+* git init
+* git clone https://github.com/wangxingdi/blog.git
+
+
+
+cp -r /home/ubuntu/hexo-blog/hexo-blog/public/* /home/ubuntu/wangxingdi.com/
+
+
+
+
 
