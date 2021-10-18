@@ -62,9 +62,10 @@ server {
 * 修改hexo的_config.yml
   * title: 王兴迪的个人博客
   * subtitle: 脑子是个好东西
+  * url: https://www.wangxingdi.com
   * theme：simple
-  * permalink: :title.html
-  * skip_render: _posts/blog/README.md
+  * permalink: :year/:month/:postname.html
+  * skip_render: [_posts/blog/README.md, _posts/blog/draft/*]
 * 修改hexo的package.json，加入
   * "hexo-generator-feed": "^3.0.0"
   * "hexo-generator-sitemap": "^2.0.0"
@@ -118,7 +119,7 @@ else
         cd /home/ubuntu/hexo-blog/hexo-blog
         sudo hexo clean && sudo hexo g
         if [ $? -eq 0 ]; then
-                sudo cp -r /home/ubuntu/hexo-blog/hexo-blog/public/* /home/ubuntu/wangxingdi.com/
+                sudo cp -rf /home/ubuntu/hexo-blog/hexo-blog/public/* /home/ubuntu/wangxingdi.com/
                 echo "$timestamp - blog post publish success"
         else
                 echo "$timestamp - blog post publish fail"

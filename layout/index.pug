@@ -4,12 +4,11 @@ block content
     if page.posts.length > 0
       ul.list-group
         each post in page.posts.sort('date', -1).toArray()
-          if (post.path.indexOf("draft") == -1)
-            li.list-group-item.title
-              if (theme.list.date)
-                div.date= date(post.date, 'YYYY年MM月DD日')
-              a(href=config.root + post.path, target=theme.post.blank ? "_blank" : "_self")= post.title
-//-              div.word-count= wordcount(post.content, '') + "字"
+          li.list-group-item.title
+            if (theme.list.date)
+              div.date= date(post.date, 'YYYY年MM月DD日')
+            a(href=config.root + post.path, target=theme.post.blank ? "_blank" : "_self")= post.title
+//-            div.word-count= wordcount(post.content, '') + "字"
   if (theme.paginator)
     div(class="paginator")
       -
